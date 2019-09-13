@@ -11,9 +11,18 @@ go get -u github.com/golang/protobuf/protoc-gen-go
 
 ## Gen
 ```shell script
-protoc -I$GOPATH/protoc-3.9.1-osx-x86_64//include -I. \
+protoc -I$GOPATH/protoc-3.9.1-osx-x86_64/include -I. \
   -I$GOPATH/src \
-  -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+  -I$GOPATH/src/github.com/grpc-gateway/third_party/googleapis \
   --go_out=plugins=grpc:. \
-  ./api/echoService.proto
+   internal/gateway/echo/echoService.proto
+```
+
+
+```shell script
+protoc -I$GOPATH/protoc-3.9.1-osx-x86_64/include  -I. \
+  -I$GOPATH/src \
+  -I$GOPATH/src/github.com/grpc-gateway/third_party/googleapis \
+  --grpc-gateway_out=logtostderr=true:. \
+  internal/gateway/echo/echoService.proto
 ```
