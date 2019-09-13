@@ -30,10 +30,14 @@ func run() error {
 }
 
 func main() {
+
+	go gw.CreateServer()
+
 	flag.Parse()
 	defer glog.Flush()
 
 	if err := run(); err != nil {
 		glog.Fatal(err)
 	}
+
 }

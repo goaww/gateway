@@ -9,7 +9,7 @@ go get -u github.com/golang/protobuf/protoc-gen-go
 ```
 
 
-## Gen
+## Gen proto
 ```shell script
 protoc -I$GOPATH/protoc-3.9.1-osx-x86_64/include -I. \
   -I$GOPATH/src \
@@ -18,11 +18,23 @@ protoc -I$GOPATH/protoc-3.9.1-osx-x86_64/include -I. \
    internal/gateway/echo/echoService.proto
 ```
 
+## Generate reverse-proxy
 
 ```shell script
 protoc -I$GOPATH/protoc-3.9.1-osx-x86_64/include  -I. \
   -I$GOPATH/src \
   -I$GOPATH/src/github.com/grpc-gateway/third_party/googleapis \
   --grpc-gateway_out=logtostderr=true:. \
+  internal/gateway/echo/echoService.proto
+```
+
+
+##  Generate swagger definitions
+
+```shell script
+protoc -I$GOPATH/protoc-3.9.1-osx-x86_64/include -I. \
+  -I$GOPATH/src \
+  -I$GOPATH/src/github.com/grpc-gateway/third_party/googleapis \
+  --swagger_out=logtostderr=true:. \
   internal/gateway/echo/echoService.proto
 ```
